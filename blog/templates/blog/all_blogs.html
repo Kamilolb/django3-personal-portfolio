@@ -1,0 +1,39 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+
+<h1 style="color:#FF5673;border:2px solid #00E6FF;font-family:century gothic">BLOG HOMEPAGE</h1>
+
+<!-- the blogs.count|pluralize automatically tells the browser whether to pluralize the preceding word or not based on the count -->
+<h2 style="color:#FF6700;font-family:century gothic">Camilo has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h2>  
+<h2 style="color:#E02154;font-family:century gothic">HOT PINK</h2>  
+
+
+<a href='http://127.0.0.1:8000/' style="font-family:century gothic">HOME</a>
+
+
+<p style="color:#00E6FF;border:2px solid #FF5673">This is a paragraph.</p>
+
+{% for blog in blogs %}
+
+<a href="{% url 'blog:detail' blog.id %}"><h1 style="color:#00E6FF;border:2px solid #FF5673;font-family:century gothic">{{ blog.title }}</h1></a>
+
+<!-- to look for more info on how to customize dates go to  https://docs.djangoproject.com/en/3.1/ref/templates/builtins/ and ctrl+f 'Fri'-->
+<h5 style="color:#00E6FF;border:2px solid #FF5673;font-family:consolas">{{ blog.date|date:'M d Y'|upper }}</h5>          
+
+<!-- blog.description|safe|truncatechars:100 striptags prevents html tags to be processed -->
+<p style="color:#00E6FF;border:2px solid #FF5673;font-family:century gothic">{{ blog.description|striptags|truncatechars:500 }}</p>
+
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+
+    <h1 style="color:#FF5673;border:2px solid #00E6FF">This is my portfolio homepage</h1>
+
+    {% load static %}
+
+    <a href="{% static 'portfolio/Resume.pdf' %}">Resume</a>
+
+    <img src="{% static 'portfolio/Banshee.jpg' %}">
+
+    <p style="color:#00E6FF;border:2px solid #FF5673">This is a paragraph.</p>
+
+    <a href='http://127.0.0.1:8000/blog/' style="font-family:century gothic">Blog</a>
+
+    {% for project in projects %}
+
+    <h1 style="color:#00E6FF;border:2px solid #FF5673">{{ project.title }}</h1>
+    <p style="color:#00E6FF;border:2px solid #FF5673">{{ project.description }}</p>
+    <img src="{{ project.image.url }}">
+    {% if project.url %}
+    <a href="{{ project.url }}" style>Link</a>
+    {% endif %}
+
+    {% endfor %}
+
+
+{% endblock %}
+
+
+
+
